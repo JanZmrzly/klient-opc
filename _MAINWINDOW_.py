@@ -7,7 +7,6 @@ https://github.com/FreeOpcUa
 Samotny kod je inspirovan FreeOPC Ua Client, dostupne z:
 https://github.com/FreeOpcUa/opcua-client-gui/blob/master/uaclient/mainwindow.py
 """
-from doctest import BLANKLINE_MARKER
 import sys
 
 from datetime import datetime
@@ -58,7 +57,7 @@ class MAINWINDOW(QMainWindow):
         
         #inicializace OPC UA vlastnosti
         self.OpcUaClient = ClientOpcUa()
-
+        
         #inicializace nastaveni
         self.mysetitngs = QSettings()
 
@@ -112,6 +111,7 @@ class MAINWINDOW(QMainWindow):
 
             self.userInterface.lineEdit_1.clear()
             self.userInterface.lineEdit_2.clear()
+            self.subTable.clearTable()
 
     def setBrowser(self):
         #serazeni jednotlivych uzlu (Nodes) do prohlizece (Browser) podle jejich napojeni (References)
@@ -212,16 +212,17 @@ class subscribedData(object):
         self.interface.userInterface.dataChangeUI.setColumnWidth(3, 60)
         
     @trycatchslot
-    def dataSubscribe(self, node = None, nodeid = None):
+    def dataSubscribe(self, node = None):
         if not isinstance(node, SyncNode):
             node = self.interface.trigger_node()
             if node is None:
                 return
-        if node in self.subscribedNodes:
-            self.interface.userInterface.statusBar.setPlainText(str(datetime.now()) + " " + "Uzel je jiz odebirany!")
+        if node in self.subscribedNodes: #TODO: nefunguje
+            self.interface.userInterface.statusBar.insertPlainText(str(datetime.now()) + " " + "Uzel je jiz odebirany!\n")
+            return
         
         self.subscribedNodes.append(node)
-        text = str('UZEL')
+        text = str()
         row = [QStandardItem(text), QStandardItem("Zadna data"), QStandardItem("Zadna data"), QStandardItem("")]
         row[0].setData(node)         
         self.view.appendRow(row)
@@ -232,10 +233,10 @@ class subscribedData(object):
         
         try:
             self.opcclient.dataChangeConnected(node, self.subHandler)
-            self.interface.userInterface.statusBar.setPlainText(str(datetime.now()) + " " + "Uzel se podarilo odebirat")
+            self.interface.userInterface.statusBar.insertPlainText(str(datetime.now()) + " " + "Uzel se podarilo odebirat\n")
 
         except Exception as ex:
-            self.interface.userInterface.statusBar.setPlainText(str(datetime.now()) + " " + "Uzel se NEPODARILO odebirat")
+            self.interface.userInterface.statusBar.insertPlainText(str(datetime.now()) + " " + "Uzel se NEPODARILO odebirat\n")
     
     #TODO: kompletne predelat
     def _update_subscription_model(self, node, value, timestamp):
@@ -255,10 +256,16 @@ class subscribedData(object):
         self.test.append(self.butt)
         print(self.test)
         return self.butt
-    
+    #TODO: opravit
     def databaseButtonClick(self):
         self.test[1].clicked.connect(print("zmacknul jsi"))
-        print("osel")
+
+    def clearTable(self):
+        self.view.setRowCount(0)
+        self._setTable()
+        self.subscribedNodes = []
+        self.pushButtons = []
+        self.test = []
 
 """
 spusteni finalni aplikace
