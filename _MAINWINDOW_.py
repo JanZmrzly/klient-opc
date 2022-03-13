@@ -258,6 +258,7 @@ class subscribedData(object):
     
     def databaseButtonClick(self):
         self.test[1].clicked.connect(print("zmacknul jsi"))
+        print("osel")
 
 """
 spusteni finalni aplikace
