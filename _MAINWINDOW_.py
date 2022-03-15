@@ -252,10 +252,15 @@ class subscribedData(object):
             i += 1       
     
     def databaseButton(self, row):
-        self.butt = QPushButton(str(row))
-        self.test.append(self.butt)
+        butt = QPushButton(str(row))
+        butt.clicked.connect(lambda _: self.buttonOnClick(butt))
+        self.test.append(butt)
         print(self.test)
-        return self.butt
+        return butt
+
+    def buttonOnClick(self, button):
+        print(button.text())
+    
     #TODO: opravit
     def databaseButtonClick(self):
         self.test[1].clicked.connect(print("zmacknul jsi"))
