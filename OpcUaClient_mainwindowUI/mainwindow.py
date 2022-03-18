@@ -150,7 +150,7 @@ class Ui_MainWindow(object):
         self.browserUI.setObjectName("browserUI")
         self.browserUI.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
         self.QueryFrame = QtWidgets.QFrame(self.appFrame)
-        self.QueryFrame.setGeometry(QtCore.QRect(870, 80, 401, 91))
+        self.QueryFrame.setGeometry(QtCore.QRect(870, 82, 401, 85))
         self.QueryFrame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.QueryFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.QueryFrame.setObjectName("QueryFrame")
