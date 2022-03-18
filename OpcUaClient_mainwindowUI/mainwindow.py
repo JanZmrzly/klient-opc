@@ -66,10 +66,13 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.connectButton.sizePolicy().hasHeightForWidth())
         self.connectButton.setSizePolicy(sizePolicy)
-        self.connectButton.setStyleSheet("background-color: rgb(235, 235, 235);\n"
+        self.connectButton.setStyleSheet("QPushButton{background-color: rgb(235, 235, 235);\n"
                                         "font: 11pt \"Roboto\";\n"
                                         "color: rgb(43, 100, 173);\n"
-                                        "border-radius: 5px;\n")
+                                        "border-radius: 5px;}\n"
+                                        "QPushButton:hover{\n"
+                                        "background-color:rgb(122, 193, 213)\n"                                                                      
+                                        "}\n")
         self.connectButton.setCheckable(False)
         self.connectButton.setObjectName("connectButton")
         self.disconnectButton = QtWidgets.QPushButton(self.connectivityFrame)
@@ -79,10 +82,13 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.disconnectButton.sizePolicy().hasHeightForWidth())
         self.disconnectButton.setSizePolicy(sizePolicy)
-        self.disconnectButton.setStyleSheet("background-color: rgb(235, 235, 235);\n"
-                                            "font: 11pt \"Roboto\";\n"
-                                            "color: rgb(43, 100, 173);\n"
-                                            "border-radius: 5px;\n")
+        self.disconnectButton.setStyleSheet("QPushButton{background-color: rgb(235, 235, 235);\n"
+                                        "font: 11pt \"Roboto\";\n"
+                                        "color: rgb(43, 100, 173);\n"
+                                        "border-radius: 5px;}\n"
+                                        "QPushButton:hover{\n"
+                                        "background-color:rgb(122, 193, 213)\n"                                                                      
+                                        "}\n")
         self.disconnectButton.setCheckable(False)
         self.disconnectButton.setObjectName("disconnectButton")
         self.aksEndpoints = QtWidgets.QPushButton(self.connectivityFrame)
@@ -92,10 +98,13 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.aksEndpoints.sizePolicy().hasHeightForWidth())
         self.aksEndpoints.setSizePolicy(sizePolicy)
-        self.aksEndpoints.setStyleSheet("background-color: rgb(235, 235, 235);\n"
+        self.aksEndpoints.setStyleSheet("QPushButton{background-color: rgb(235, 235, 235);\n"
                                         "font: 11pt \"Roboto\";\n"
                                         "color: rgb(43, 100, 173);\n"
-                                        "border-radius: 5px;\n")
+                                        "border-radius: 5px;}\n"
+                                        "QPushButton:hover{\n"
+                                        "background-color:rgb(122, 193, 213)\n"                                                                      
+                                        "}\n")
         self.aksEndpoints.setCheckable(False)
         self.aksEndpoints.setFlat(False)
         self.aksEndpoints.setObjectName("aksEndpoints")

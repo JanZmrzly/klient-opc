@@ -20,7 +20,7 @@ from PyQt5 import QtGui
 from asyncua import ua
 from asyncua.sync import SyncNode
 
-from CLIENT import ClientOpcUa
+from client_application import ClientOpcUa
 
 from OpcUaClient_mainwindowUI.mainwindow import Ui_MainWindow
 
@@ -125,9 +125,11 @@ class MAINWINDOW(QMainWindow):
         self.userInterface.browserUI.setContextMenuPolicy(Qt.CustomContextMenu)
         self.userInterface.browserUI.customContextMenuRequested.connect(self.display_Browser)
         self.browserMenu = QMenu()
-        self.browserMenu.setStyleSheet("background-color: rgb(235, 235, 235);\n"
+        self.browserMenu.setStyleSheet("QMenu{background-color: rgb(235, 235, 235);\n"
                                        "font: 11pt \"Roboto\";\n"
-                                       "color: rgb(43, 100, 173);")
+                                       "color: rgb(43, 100, 173);\n}"
+                                       "QMenu::item:selected{\n"
+                                       "background-color:rgb(122, 193, 213);\n}")
         self.browserMenu.addSeparator()
       
     def _addAction(self, action, destiny):
@@ -223,8 +225,10 @@ class subscribedData(object):
             return
         
         self.subscribedNodes.append(node)
-        text = str()
-        row = [QStandardItem(text), QStandardItem("Zadna data"), QStandardItem("Zadna data"), QStandardItem("")]
+        
+        atrib_name = (node.get_browse_name().to_string())
+
+        row = [QStandardItem(atrib_name), QStandardItem("Zadna data"), QStandardItem("Zadna data"), QStandardItem("")]
         row[0].setData(node)         
         self.view.appendRow(row)
 
