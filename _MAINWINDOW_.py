@@ -178,6 +178,7 @@ class subscribedDataHandler(QObject):
         else:
             dato = datetime.now()
         self.data_change_fired.emit(node, str(val), dato)
+        #TODO: Ukladani dat do databaze
 
 class subscribedData(object):
 
