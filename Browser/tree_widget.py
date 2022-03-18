@@ -18,12 +18,21 @@ class TreeWidget(QObject):
         self.model.clear()  # FIXME: do we need this?
         self.model.error.connect(self.error)
         self.view.setModel(self.model)
-  
+
         self.model.setUniformRowHeights(True)
         self.model.setHorizontalHeaderLabels(['Zobrazené jméno', 'Node ID'])
         self.view.setColumnWidth(0,400)
         self.view.setColumnWidth(1,70)
-
+        """
+        self.view.setStyleSheet("QTreeView{;\n"
+                                "background-color: rgb(235, 235, 235);\n"
+                                "font: 11pt \"Roboto\";\n"
+                                "color: rgb(43, 100, 173);\n"
+                                "border-radius: 5px;\n}"
+                                "QTreeView::item:selected{;\n"
+                                "background-color:rgb(122, 193, 213);\n"
+                                "}\n")
+        """
         self.model.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.settings = QSettings()
         state = self.settings.value("tree_widget_state", None)

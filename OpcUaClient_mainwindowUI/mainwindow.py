@@ -66,9 +66,13 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.connectButton.sizePolicy().hasHeightForWidth())
         self.connectButton.setSizePolicy(sizePolicy)
-        self.connectButton.setStyleSheet("background-color: rgb(235, 235, 235);\n"
+        self.connectButton.setStyleSheet("QPushButton{background-color: rgb(235, 235, 235);\n"
                                         "font: 11pt \"Roboto\";\n"
-                                        "color: rgb(43, 100, 173);\n")
+                                        "color: rgb(43, 100, 173);\n"
+                                        "border-radius: 5px;}\n"
+                                        "QPushButton:hover{\n"
+                                        "background-color:rgb(122, 193, 213)\n"                                                                      
+                                        "}\n")
         self.connectButton.setCheckable(False)
         self.connectButton.setObjectName("connectButton")
         self.disconnectButton = QtWidgets.QPushButton(self.connectivityFrame)
@@ -78,9 +82,13 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.disconnectButton.sizePolicy().hasHeightForWidth())
         self.disconnectButton.setSizePolicy(sizePolicy)
-        self.disconnectButton.setStyleSheet("background-color: rgb(235, 235, 235);\n"
-                                            "font: 11pt \"Roboto\";\n"
-                                            "color: rgb(43, 100, 173);\n")
+        self.disconnectButton.setStyleSheet("QPushButton{background-color: rgb(235, 235, 235);\n"
+                                        "font: 11pt \"Roboto\";\n"
+                                        "color: rgb(43, 100, 173);\n"
+                                        "border-radius: 5px;}\n"
+                                        "QPushButton:hover{\n"
+                                        "background-color:rgb(122, 193, 213)\n"                                                                      
+                                        "}\n")
         self.disconnectButton.setCheckable(False)
         self.disconnectButton.setObjectName("disconnectButton")
         self.aksEndpoints = QtWidgets.QPushButton(self.connectivityFrame)
@@ -90,9 +98,13 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.aksEndpoints.sizePolicy().hasHeightForWidth())
         self.aksEndpoints.setSizePolicy(sizePolicy)
-        self.aksEndpoints.setStyleSheet("background-color: rgb(235, 235, 235);\n"
+        self.aksEndpoints.setStyleSheet("QPushButton{background-color: rgb(235, 235, 235);\n"
                                         "font: 11pt \"Roboto\";\n"
-                                        "color: rgb(43, 100, 173);\n")
+                                        "color: rgb(43, 100, 173);\n"
+                                        "border-radius: 5px;}\n"
+                                        "QPushButton:hover{\n"
+                                        "background-color:rgb(122, 193, 213)\n"                                                                      
+                                        "}\n")
         self.aksEndpoints.setCheckable(False)
         self.aksEndpoints.setFlat(False)
         self.aksEndpoints.setObjectName("aksEndpoints")
@@ -107,7 +119,8 @@ class Ui_MainWindow(object):
         self.statusBar.setGeometry(QtCore.QRect(10, 640, 511, 71))
         self.statusBar.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
-                                     "color: rgb(43, 100, 173);")
+                                     "color: rgb(43, 100, 173);\n"
+                                     "border-radius: 5px;\n")
         self.statusBar.setReadOnly(True)
         self.statusBar.setObjectName("statusBar")
         self.URIFrame = QtWidgets.QFrame(self.appFrame)
@@ -122,7 +135,8 @@ class Ui_MainWindow(object):
         self.serverURI.setSizePolicy(sizePolicy)
         self.serverURI.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
-                                     "color: rgb(43, 100, 173);")
+                                     "color: rgb(43, 100, 173);\n"
+                                     "border-radius: 5px;\n")
         self.serverURI.setObjectName("serverURI")
         self.connectLabel = QtWidgets.QLabel(self.URIFrame)
         self.connectLabel.setGeometry(QtCore.QRect(0, 0, 131, 31))
@@ -139,18 +153,20 @@ class Ui_MainWindow(object):
         self.dataChangeUI.setGeometry(QtCore.QRect(520, 0, 741, 461))
         self.dataChangeUI.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                         "font: 11pt \"Roboto\";\n"
-                                        "color: rgb(43, 100, 173);")
+                                        "color: rgb(43, 100, 173);\n"
+                                        "border-radius: 5px;\n")
         self.dataChangeUI.setObjectName("dataChangeUI")
         self.dataChangeUI.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
         self.browserUI = QtWidgets.QTreeView(self.mainFrame)
         self.browserUI.setGeometry(QtCore.QRect(0, 0, 511, 461))
         self.browserUI.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
-                                     "color: rgb(43, 100, 173);")
+                                     "color: rgb(43, 100, 173);\n"
+                                     "border-radius: 5px;\n")
         self.browserUI.setObjectName("browserUI")
         self.browserUI.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
         self.QueryFrame = QtWidgets.QFrame(self.appFrame)
-        self.QueryFrame.setGeometry(QtCore.QRect(870, 80, 401, 91))
+        self.QueryFrame.setGeometry(QtCore.QRect(870, 82, 401, 85))
         self.QueryFrame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.QueryFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.QueryFrame.setObjectName("QueryFrame")
@@ -163,17 +179,20 @@ class Ui_MainWindow(object):
         self.label_1 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_1.setObjectName("label_1")
         self.label_1.setStyleSheet("font: 11pt \"Roboto\";\n"
-                                   "color: rgb(43, 100, 173);")
+                                   "color: rgb(43, 100, 173);\n"
+                                   "border-radius: 5px;\n")
         self.verticalLayout_2.addWidget(self.label_1)
         self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_2.setObjectName("label_2")
         self.label_2.setStyleSheet("font: 11pt \"Roboto\";\n"
-                                   "color: rgb(43, 100, 173);")
+                                   "color: rgb(43, 100, 173);\n"
+                                   "border-radius: 5px;\n")
         self.verticalLayout_2.addWidget(self.label_2)
         self.label_3 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_3.setObjectName("label_3")
         self.label_3.setStyleSheet("font: 11pt \"Roboto\";\n"
-                                   "color: rgb(43, 100, 173);")
+                                   "color: rgb(43, 100, 173);\n"
+                                   "border-radius: 5px;\n")
         self.verticalLayout_2.addWidget(self.label_3)
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.QueryFrame)
         self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(130, 5, 271, 80))
@@ -186,21 +205,24 @@ class Ui_MainWindow(object):
         self.lineEdit_1.setObjectName("lineEdit_1")
         self.lineEdit_1.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
-                                     "color: rgb(43, 100, 173);")
+                                     "color: rgb(43, 100, 173);\n"
+                                     "border-radius: 5px;\n")
         self.lineEdit_1.setReadOnly(True)
         self.verticalLayout_3.addWidget(self.lineEdit_1)
         self.lineEdit_2 = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.lineEdit_2.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
-                                     "color: rgb(43, 100, 173);")
+                                     "color: rgb(43, 100, 173);\n"
+                                     "border-radius: 5px;\n")
         self.lineEdit_2.setReadOnly(True)
         self.verticalLayout_3.addWidget(self.lineEdit_2)
         self.lineEdit_3 = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.lineEdit_3.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
-                                     "color: rgb(43, 100, 173);")
+                                     "color: rgb(43, 100, 173);\n"
+                                     "border-radius: 5px;\n")
         self.lineEdit_3.setReadOnly(True)
         self.verticalLayout_3.addWidget(self.lineEdit_3)
         self.verticalLayout.addWidget(self.appFrame)
