@@ -13,13 +13,12 @@ import logging
 
 from opcua import ua
 from opcua import Client
-from opcua import Node
 from opcua import crypto
 from opcua.tools import endpoint_to_strings
 
 from PyQt5.QtCore import QSettings
 
-#slozi k zobrazovani hlaseni
+#debug
 statusBar = logging.getLogger(__name__)
 
 class ClientOpcUa(object):
@@ -32,9 +31,9 @@ class ClientOpcUa(object):
 
         #paramtery urcujici vlastnosti klienta
         self.client = None
-        self.connectionStatus = False
-        self.dataChangeSubcription = None
-        self.subscripedDataChange = {}
+        self.status_of_connection = False
+        self.data_change_subcription = None
+        self.subscriped_data_change = {}
         
         #parametry nasaveni klienta, aby nezalezelo na platforme, na ktere je pouzivany
         self.settings = QSettings()
@@ -43,17 +42,18 @@ class ClientOpcUa(object):
 
         #nastaveni parametru do puvodnich hodnot
         self.client = None
-        self.connectionStatus = False
-        self.dataChangeSubcription = None
-        self.subscripedDataChange = {}
+        self.status_of_connection = False
+        self.data_change_subcription = None
+        self.subscriped_data_change = {}
     
     def load_security_setting(self, uri):
         #nacteni zabeapeceni serveru pro komunikaci
+        #TODO
         self.security_level = None
         self.certificate_upoad = None
         self.security_policy = None
             
-        security = self.settings.value("secSettings", None)
+        security = self.settings.value("sec_settings", None)
         if uri in security:
             #klient vyuziva pouze level a policy, dalsi slouzi pouze k rozsireni klienta
             level, policy, cert, key = security[uri]
@@ -65,7 +65,8 @@ class ClientOpcUa(object):
 
     def save_secutity(self, uri):
         #ulozeni nasteveni zabezpeceni komunikace
-        security = self.settings.value("secSettings", None)
+         #TODO
+        security = self.settings.value("sec_settings", None)
         
         if security is None:
             security = {}
@@ -73,7 +74,7 @@ class ClientOpcUa(object):
         if security is not None:
             security[uri] = [self.security_level, self.security_policy]
     
-        self.settings.setValue("secSettings", security)  
+        self.settings.setValue("sec_Settings", security)  
 
     """
     @staticmethod - vestaveny dekorator (definuje statickou matodu v Pythonu)
@@ -89,7 +90,6 @@ class ClientOpcUa(object):
 
         #nasledne klient vypise v satusBaru endpoints a vztvori z nich string
         for k, endp in enumerate(endpoints, start = 1):
-            statusBar.info('Endpoint %s je:', k)
             for (i, j) in endpoint_to_strings(endp):
                 statusBar.info('%s:%s', i, j)
             statusBar.info('  ')
@@ -101,10 +101,9 @@ class ClientOpcUa(object):
         return self.client.get_node(nodeid)
     
     def disconeted(self):
-        #odpojeni od serveru, nasledne realizovane pomoci tlacitka
-        statusBar.info("Odpojovani ze serveru")
-        if self.connectionStatus:
-            self.connectionStatus = False
+        #odpojeni od serveru, nasledne realizovane pomoci tlacitka''
+        if self.status_of_connection:
+            self.status_of_connection = False
             try:
                 self.client.disconnect()
             finally:
@@ -116,8 +115,17 @@ class ClientOpcUa(object):
         #pripojeni k serveru, nasledne realizovane pomoci tlacitka
         self.disconeted()
         self.client = Client(uri)
-
+        
+        """
+        #nastaveni kodovani prenosu - zabezpeceni 
+        self.client.set_user("user1")
+        self.client.set_password("pw1")
+        self.client.set_security_string("Basic256Sha256,SignAndEncrypt,key.pem,cert.pem")
+        self.client.application_uri = "urn:example.org:FreeOpcUa:python-opcua"
+        """
+        
         if self.security_level is not None and self.security_policy is not None:
+            #TODO: zabezpecena kominukace nefunguje
             self.client.set.security(
                 getattr(crypto.security_policies, 'SecurityPolicy' + self.security_policy),
                 #pokud by bylo nutne nahrat certifikat, je to nutne provest zde
@@ -125,23 +133,27 @@ class ClientOpcUa(object):
             )         
           
         self.client.connect()
-        self.connectionStatus = True
+        self.status_of_connection = True
         self.save_secutity(uri)
 
-    def dataChangeConnected(self, node, handler):
+    def data_change_connected(self, node, handler):
         #prijimani dat ze serveru, realtimove videna promenna
         #500 - je perioda publikovani odebirane zmeny dat v milisekundach
-        if not self.dataChangeSubcription:
-            self.dataChangeSubcription = self.client.create_subscription(500, handler)
+        if not self.data_change_subcription:
+            self.data_change_subcription = self.client.create_subscription(500, handler)
         
-        handle = self.dataChangeSubcription.subscribe_data_change(node)        
-        self.subscripedDataChange[node.nodeid] = handle
+        handle = self.data_change_subcription.subscribe_data_change(node)        
+        self.subscriped_data_change[node.nodeid] = handle
         
         return handle
     
-    def dataChnageDisconneted(self, node):
+    def data_chnage_disconneted(self, node):
         #zruseni prijimani dat ze serveru
-        self.dataChangeSubcription.unsubscribe(self.subscripedDataChange[node.nodeid])
+        self.data_change_subcription.unsubscribe(self.subscriped_data_change[node.nodeid])
+
+    #TODO: vytvorit funkci warper vracejici servery na siti
+    def _find_servers_on_network(self):
+        print(lambda _:self.client.connect_and_get_server_endpoints())
     
 """
                                          ___
@@ -149,5 +161,6 @@ class ClientOpcUa(object):
                                         <|>
                                         _/\_
 """
-#TODO: get_subnodes, get_attributNode, eventChangeConnected, eventChangeDisconnected
+#TODO: get_subnodes, event_change_connected, event_change_disconnected
+#TODO: nefunguje zabezpecena komuniakce
 #security - upload certificate

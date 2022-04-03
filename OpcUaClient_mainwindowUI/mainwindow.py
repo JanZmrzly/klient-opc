@@ -14,7 +14,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1280, 720)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(1)
         sizePolicy.setVerticalStretch(1)
@@ -52,7 +51,7 @@ class Ui_MainWindow(object):
         self.logoSMC.setGeometry(QtCore.QRect(10, 10, 191, 61))
         self.logoSMC.setText("")
         self.logoSMC.setTextFormat(QtCore.Qt.RichText)
-        self.logoSMC.setPixmap(QtGui.QPixmap("OpcUaClient_mainwindowUI/icones_for_gui/smc_logo.png"))
+        #self.logoSMC.setPixmap(QtGui.QPixmap("OpcUaClient_mainwindowUI/icones_for_gui/smc_logo.png"))
         self.logoSMC.setScaledContents(True)
         self.logoSMC.setObjectName("logoSMC")
         self.connectivityFrame = QtWidgets.QFrame(self.appFrame)
@@ -69,7 +68,10 @@ class Ui_MainWindow(object):
         self.connectButton.setStyleSheet("QPushButton{background-color: rgb(235, 235, 235);\n"
                                         "font: 11pt \"Roboto\";\n"
                                         "color: rgb(43, 100, 173);\n"
-                                        "border-radius: 5px;}\n"
+                                        "border-style: outset;\n"
+                                        "border-radius: 5px;\n"
+                                        "border-width: 2px;\n"
+                                        "border-color: rgb(43, 100, 173);}\n"
                                         "QPushButton:hover{\n"
                                         "background-color:rgb(122, 193, 213)\n"                                                                      
                                         "}\n")
@@ -85,7 +87,10 @@ class Ui_MainWindow(object):
         self.disconnectButton.setStyleSheet("QPushButton{background-color: rgb(235, 235, 235);\n"
                                         "font: 11pt \"Roboto\";\n"
                                         "color: rgb(43, 100, 173);\n"
-                                        "border-radius: 5px;}\n"
+                                        "border-style: outset;\n"
+                                        "border-radius: 5px;\n"
+                                        "border-width: 2px;\n"
+                                        "border-color: rgb(43, 100, 173);}\n"
                                         "QPushButton:hover{\n"
                                         "background-color:rgb(122, 193, 213)\n"                                                                      
                                         "}\n")
@@ -101,7 +106,10 @@ class Ui_MainWindow(object):
         self.aksEndpoints.setStyleSheet("QPushButton{background-color: rgb(235, 235, 235);\n"
                                         "font: 11pt \"Roboto\";\n"
                                         "color: rgb(43, 100, 173);\n"
-                                        "border-radius: 5px;}\n"
+                                        "border-style: outset;\n"
+                                        "border-radius: 5px;\n"
+                                        "border-width: 2px;\n"
+                                        "border-color: rgb(43, 100, 173);}\n"
                                         "QPushButton:hover{\n"
                                         "background-color:rgb(122, 193, 213)\n"                                                                      
                                         "}\n")
@@ -120,14 +128,14 @@ class Ui_MainWindow(object):
         self.statusBar.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
                                      "color: rgb(43, 100, 173);\n"
-                                     "border-radius: 5px;\n")
+                                     "border-radius: 5px;\n")                         
         self.statusBar.setReadOnly(True)
         self.statusBar.setObjectName("statusBar")
         self.URIFrame = QtWidgets.QFrame(self.appFrame)
         self.URIFrame.setGeometry(QtCore.QRect(10, 90, 441, 80))
         self.URIFrame.setObjectName("URIFrame")
         self.serverURI = QtWidgets.QLineEdit(self.URIFrame)
-        self.serverURI.setGeometry(QtCore.QRect(130, 0, 301, 31))
+        self.serverURI.setGeometry(QtCore.QRect(130, 0, 301, 30))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -135,8 +143,9 @@ class Ui_MainWindow(object):
         self.serverURI.setSizePolicy(sizePolicy)
         self.serverURI.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
-                                     "color: rgb(43, 100, 173);\n"
-                                     "border-radius: 5px;\n")
+                                     "color: rgb(43, 100, 173);\n"                               
+                                     "border-radius: 5px;\n"                                     
+                                     )
         self.serverURI.setObjectName("serverURI")
         self.connectLabel = QtWidgets.QLabel(self.URIFrame)
         self.connectLabel.setGeometry(QtCore.QRect(0, 0, 131, 31))
@@ -166,12 +175,12 @@ class Ui_MainWindow(object):
         self.browserUI.setObjectName("browserUI")
         self.browserUI.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
         self.QueryFrame = QtWidgets.QFrame(self.appFrame)
-        self.QueryFrame.setGeometry(QtCore.QRect(870, 82, 401, 85))
+        self.QueryFrame.setGeometry(QtCore.QRect(870, 82, 400, 85))
         self.QueryFrame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.QueryFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.QueryFrame.setObjectName("QueryFrame")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.QueryFrame)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(0, 5, 131, 80))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(35, 4, 131, 80))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -188,35 +197,38 @@ class Ui_MainWindow(object):
                                    "color: rgb(43, 100, 173);\n"
                                    "border-radius: 5px;\n")
         self.verticalLayout_2.addWidget(self.label_2)
+        """
         self.label_3 = QtWidgets.QLabel(self.verticalLayoutWidget)
         self.label_3.setObjectName("label_3")
         self.label_3.setStyleSheet("font: 11pt \"Roboto\";\n"
                                    "color: rgb(43, 100, 173);\n"
                                    "border-radius: 5px;\n")
         self.verticalLayout_2.addWidget(self.label_3)
+        """
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.QueryFrame)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(130, 5, 271, 80))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(128, 5, 271, 80))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.lineEdit_1 = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.lineEdit_1 = QtWidgets.QComboBox(self.verticalLayoutWidget_2)
+        self.lineEdit_1.setFixedHeight(30)
         self.lineEdit_1.setEnabled(True)
         self.lineEdit_1.setObjectName("lineEdit_1")
         self.lineEdit_1.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
                                      "color: rgb(43, 100, 173);\n"
                                      "border-radius: 5px;\n")
-        self.lineEdit_1.setReadOnly(True)
         self.verticalLayout_3.addWidget(self.lineEdit_1)
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.lineEdit_2 = QtWidgets.QComboBox(self.verticalLayoutWidget_2)
+        self.lineEdit_2.setFixedHeight(30)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.lineEdit_2.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
                                      "color: rgb(43, 100, 173);\n"
                                      "border-radius: 5px;\n")
-        self.lineEdit_2.setReadOnly(True)
         self.verticalLayout_3.addWidget(self.lineEdit_2)
+        """
         self.lineEdit_3 = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.lineEdit_3.setStyleSheet("background-color: rgb(235, 235, 235);\n"
@@ -225,6 +237,7 @@ class Ui_MainWindow(object):
                                      "border-radius: 5px;\n")
         self.lineEdit_3.setReadOnly(True)
         self.verticalLayout_3.addWidget(self.lineEdit_3)
+        """
         self.verticalLayout.addWidget(self.appFrame)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -237,12 +250,12 @@ class Ui_MainWindow(object):
         self.labelOPCUA.setText(_translate("MainWindow", "OPC Unified Architecture Klient"))
         self.connectButton.setText(_translate("MainWindow", "Připojit"))
         self.disconnectButton.setText(_translate("MainWindow", "Odpojit"))
-        self.aksEndpoints.setText(_translate("MainWindow", "Dotaz serveru"))
+        self.aksEndpoints.setText(_translate("MainWindow", "Dotaz sítě"))
         self.serverURI.setText(_translate("MainWindow", "opc.tcp://opcuaserver.com:48010"))
         self.connectLabel.setText(_translate("MainWindow", "Připojení k serveru:"))
-        self.label_1.setText(_translate("MainWindow", "(SecurityMode):"))
-        self.label_2.setText(_translate("MainWindow", "(SecurityPolicy):"))
-        self.label_3.setText(_translate("MainWindow", "(None):"))
+        self.label_1.setText(_translate("MainWindow", "SecurityMode:"))
+        self.label_2.setText(_translate("MainWindow", "SecurityPolicy:"))
+        #self.label_3.setText(_translate("MainWindow", "(None):"))
 
 
 if __name__ == "__main__":
