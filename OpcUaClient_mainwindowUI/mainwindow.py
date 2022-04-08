@@ -159,7 +159,7 @@ class Ui_MainWindow(object):
         self.mainFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.mainFrame.setObjectName("mainFrame")
         self.dataChangeUI = QtWidgets.QTableView(self.mainFrame)
-        self.dataChangeUI.setGeometry(QtCore.QRect(520, 0, 741, 461))
+        self.dataChangeUI.setGeometry(QtCore.QRect(520, 0, 740, 461))
         self.dataChangeUI.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                         "font: 11pt \"Roboto\";\n"
                                         "color: rgb(43, 100, 173);\n"
@@ -167,7 +167,7 @@ class Ui_MainWindow(object):
         self.dataChangeUI.setObjectName("dataChangeUI")
         self.dataChangeUI.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
         self.browserUI = QtWidgets.QTreeView(self.mainFrame)
-        self.browserUI.setGeometry(QtCore.QRect(0, 0, 511, 461))
+        self.browserUI.setGeometry(QtCore.QRect(0, 0, 511, 460))
         self.browserUI.setStyleSheet("background-color: rgb(235, 235, 235);\n"
                                      "font: 11pt \"Roboto\";\n"
                                      "color: rgb(43, 100, 173);\n"

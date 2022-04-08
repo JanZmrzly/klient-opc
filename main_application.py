@@ -34,6 +34,8 @@ from Browser import resources
 from Browser.tree_widget import TreeWidget
 from Browser.utils import trycatchslot
 
+from sql_lite import OpcUaDataBase
+
 statusBar = logging.getLogger(__name__)
 
 class main_applicatation(QMainWindow):
@@ -63,6 +65,10 @@ class main_applicatation(QMainWindow):
 
         #hlaseni po spusteni
         self.user_interface.statusBar.insertPlainText(str(datetime.now()) + " " + "Aplikace byla spustena USPESNE\n")
+
+        #pripojeni database SQL3 Lite
+        self.database = OpcUaDataBase()
+        self.database_connected()
 
     """
     @trycatchslot - zavola metodu nazvanou show_error nebo signal error
@@ -185,12 +191,17 @@ class main_applicatation(QMainWindow):
     def set_policy_and_security(self):
         self.user_interface.lineEdit_1.addItems(["None","Basic","Basic256Sha256"])
         self.user_interface.lineEdit_2.addItems(["None","Sign","SignAndEncrypted"])
-        
+
+    def database_connected(self):
+            self.database.connect_database()
+            self.database.create_table()        
   
 class subscribedDataHandler(QObject):
     #zdroj: https://github.com/FreeOpcUa/opcua-client-gui/blob/master/uaclient/mainwindow.py
     #zobrazeni dat v tabulce odberu dataChangeUI
+    
     data_change_fired = pyqtSignal(object, str, str)
+    database = OpcUaDataBase()
 
     def datachange_notification(self, node, val, data):
         if data.monitored_item.Value.SourceTimestamp:
@@ -200,7 +211,15 @@ class subscribedDataHandler(QObject):
         else:
             dato = datetime.now()
         self.data_change_fired.emit(node, str(val), dato)
-        #TODO: Ukladani dat do databaze
+        
+        try:
+            self.database.connect_database()
+        except self.database.connection_status == True:
+            pass
+
+        name = str(node)
+        timestamp = str(dato)
+        self.database.add_row(name, val, timestamp)
 
 class subscribedData(object):
 
