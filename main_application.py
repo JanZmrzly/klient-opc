@@ -60,15 +60,15 @@ class main_applicatation(QMainWindow):
         #inicializace nastaveni
         self.mysetitngs = QSettings()
 
-        #inicializace tabulky pro odebirani dat
-        self.sub_table = subscribedData(self, self.opc_ua_client)
-
-        #hlaseni po spusteni
-        self.user_interface.statusBar.insertPlainText(str(datetime.now()) + " " + "Aplikace byla spustena USPESNE\n")
-
         #pripojeni database SQL3 Lite
         self.database = OpcUaDataBase()
         self.database_connected()
+
+        #inicializace tabulky pro odebirani dat
+        self.sub_table = subscribedData(self, self.opc_ua_client, self.database)
+
+        #hlaseni po spusteni
+        self.user_interface.statusBar.insertPlainText(str(datetime.now()) + " " + "Aplikace byla spustena USPESNE\n")
 
     """
     @trycatchslot - zavola metodu nazvanou show_error nebo signal error
@@ -201,7 +201,6 @@ class subscribedDataHandler(QObject):
     #zobrazeni dat v tabulce odberu dataChangeUI
     
     data_change_fired = pyqtSignal(object, str, str)
-    database = OpcUaDataBase()
 
     def datachange_notification(self, node, val, data):
         if data.monitored_item.Value.SourceTimestamp:
@@ -210,22 +209,15 @@ class subscribedDataHandler(QObject):
             dato = data.monitored_item.Value.ServerTimestamp.isoformat()
         else:
             dato = datetime.now()
-        self.data_change_fired.emit(node, str(val), dato)
         
-        try:
-            self.database.connect_database()
-        except self.database.connection_status == True:
-            pass
-
-        name = str(node)
-        timestamp = str(dato)
-        self.database.add_row(name, val, timestamp)
+        self.data_change_fired.emit(node, str(val), dato)
 
 class subscribedData(object):
 
-    def __init__(self, interface, opcclient):
+    def __init__(self, interface, opcclient, database):
         self.interface = interface
         self.opcclient = opcclient
+        self.database = database
         self.subHandler = subscribedDataHandler()
         
         self.data_change_subscription = []
@@ -239,10 +231,10 @@ class subscribedData(object):
         
         #zobrazeni uzlu do tabulky odberu - dataChangeUI
         self.subHandler.data_change_fired.connect(self._update_subscription_model, type=Qt.QueuedConnection)
-        
+                
         #prizareni funkci tlacitkum v kontextovem menu
         self.interface._add_action("Odebirat uzel", self.data_change_subscribe)
-        self.interface._add_action("Ukončit zobrazení", self.data_unsubscribe)  
+        self.interface._add_action("Ukončit zobrazení", self.data_unsubscribe)
   
     def print_test1(self):
         print("Odezva") 
@@ -294,8 +286,23 @@ class subscribedData(object):
                 it.setText(value)
                 it_ts = self.view.item(i, 2)
                 it_ts.setText(timestamp)
+                self.add_to_databse(i, node, value, timestamp)
             i += 1       
     
+    #ukladani dat do database
+    def add_to_databse(self, i, node, value, timestamp):
+        if self.push_button[i].isChecked():
+            
+            if self.database.connection_status == False:
+                self.database.connect_database()
+            elif self.database.connection_status == True:
+                pass
+            name = node.get_browse_name().to_string()
+            string_vaule = str(value)
+            self.database.add_row(name, string_vaule, timestamp)            
+        else:
+            pass
+
     def database_button(self, row):
         button = QPushButton(str(row))
         button.setStyleSheet("QPushButton{background-color: rgb(235, 235, 235);\n"

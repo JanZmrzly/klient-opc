@@ -84,9 +84,8 @@ class ClientOpcUa(object):
    
     @classmethod
     def get_endpoints(uri):        
-        klient = Client(uri, timeout = 4)
-        #klient.connect_and_get_server_endpoints()
-        endpoints = klient.connect_and_get_server_endpoints()
+        client = Client(uri, timeout = 4)
+        endpoints = client.connect_and_get_server_endpoints()
 
         #nasledne klient vypise v satusBaru endpoints a vztvori z nich string
         for k, endp in enumerate(endpoints, start = 1):

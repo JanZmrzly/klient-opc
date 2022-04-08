@@ -59,16 +59,3 @@ class OpcUaDataBase():
         except:
             print("Nepodarilo se pridat data")
             pass
-
-    def data_acess(self, name, value, timestamp):
-        """
-        Pristup k databasi
-        """
-
-        print(self.connection_status)
-        data  = self.connection.execute("SELECT  from NODES")
-        for row in data:
-            print()
-            print ("NAME = ", row[0])
-            #print ("VALUE = ", row[1])
-            #print ("TIMESTAMP = ", row[2], "\n")
