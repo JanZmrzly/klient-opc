@@ -81,7 +81,7 @@ class ClientOpcUa(object):
     Metoda neprijima zadny argument, i kdzy je pozadovany (volany) instanci 
     tridy nebo samotnou trido
     """
-   
+    """
     @classmethod
     def get_endpoints(uri):        
         client = Client(uri, timeout = 4)
@@ -94,6 +94,7 @@ class ClientOpcUa(object):
             statusBar.info('  ')
         
         return endpoints
+    """
     
     def get_node(self, nodeid):
         #mapovani address space, ziskani uzlu

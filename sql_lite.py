@@ -19,7 +19,7 @@ class OpcUaDataBase():
             print("Database ÚSPĚŠNĚ připojena")
         except:
             if self.connection_status == True:
-                print("Database byla připojena dříve DŘÍVE")
+                print("Database byla připojena DŘÍVE")
             else:
                 print("Database NEBYLA připojena")
 
@@ -55,7 +55,7 @@ class OpcUaDataBase():
             self.connection.execute("INSERT INTO NODES (NAME, VALUE, TIMESTAMP) \
                                  VALUES (?, ?, ?)", (name, value, date))
             self.connection.commit()
-            print("Podarilo se pridat data")
+            print("Podařilo se přidat data do database")            
         except:
-            print("Nepodarilo se pridat data")
+            print("Nepodařilo se přidat data do database")
             pass
