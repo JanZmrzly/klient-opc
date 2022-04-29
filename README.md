@@ -34,8 +34,10 @@ python start_application.py
 ```
 ## Jak projekt používat
 
+![Náhled]()
+
 ## Užitečné odkazy
 
 * [text_baklářské_práce](https://www.vutbr.cz/studenti/zav-prace/detail/139739)
-* [FreeOpcUa]((https://github.com/FreeOpcUa))
+* [FreeOpcUa](https://github.com/FreeOpcUa)
 * [VUT_BRNO](https://www.vut.cz/)
