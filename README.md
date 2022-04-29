@@ -34,7 +34,7 @@ python start_application.py
 ```
 ## Jak projekt používat
 
-![Náhled](https://github.com/JanZmrzly/klient-opc/blob/read-me-file/ua_client_final_preview.png)
+![Náhled](https://github.com/JanZmrzly/klient-opc/blob/read-me-file/ua_client_final_preview_r.jpg)
 
 ## Užitečné odkazy
 
