@@ -45,7 +45,7 @@ python start_application.py
 ## Náhled uživatelského rozhraní
 
 
-![Náhled](https://github.com/JanZmrzly/klient-opc/blob/read-me-file/ua_client_final_preview_r.jpg)
+![Náhled](https://github.com/JanZmrzly/klient-opc/blob/main/ua_client_final_preview_r.jpg)
 
 ## Licence
 
