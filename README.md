@@ -11,11 +11,21 @@ Práce je zaměřena na možnosti využití jazyku Python pro datovou komunikaci
 
 * Instalace potřebných knihoven etc.
 * Spuštění aplikace
-* Jak projekt používat
+* Náhled uživatelského rozhraní
 * Užitečné odkazy
 ## Instalace potřebných knihoven etc.
 
-#TODO: Doplnit, vytvorit base.txt
+Pro Windows OS:
+
+```bash
+python3 -m pip install -r base.txt
+```
+
+Pro Mac OS:
+
+```bash
+python -m pip install -r base.txt
+```
 
 ## Spuštění aplikace
 
@@ -32,12 +42,17 @@ Pro Mac OS:
 ```bash
 python start_application.py
 ```
-## Jak projekt používat
+## Náhled uživatelského rozhraní
+
 
 ![Náhled](https://github.com/JanZmrzly/klient-opc/blob/read-me-file/ua_client_final_preview_r.jpg)
 
+## Licence
+
+[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)
+
 ## Užitečné odkazy
 
-* [text_baklářské_práce](https://www.vutbr.cz/studenti/zav-prace/detail/139739)
+* [text_bakalářské_práce](https://www.vutbr.cz/studenti/zav-prace/detail/139739)
 * [FreeOpcUa](https://github.com/FreeOpcUa)
-* [VUT_BRNO](https://www.vut.cz/)
+* [vut_brno](https://www.vut.cz/)
