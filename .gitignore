@@ -1,0 +1,10 @@
+nodes_database.db
+__pycache__/client_application.cpython-310.pyc
+__pycache__/main_application.cpython-310.pyc
+__pycache__/sql_lite.cpython-310.pyc
+Browser/__pycache__/__init__.cpython-310.pyc
+Browser/__pycache__/resources.cpython-310.pyc
+Browser/__pycache__/tree_widget.cpython-310.pyc
+Browser/__pycache__/utils.cpython-310.pyc
+OpcUaClient_mainwindowUI/__pycache__/__init__.cpython-310.pyc
+OpcUaClient_mainwindowUI/__pycache__/mainwindow.cpython-310.pyc
