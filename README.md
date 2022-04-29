@@ -49,7 +49,7 @@ python start_application.py
 
 ## Licence
 
-[GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html)
+[GNU General Public License v3.0](https://github.com/JanZmrzly/klient-opc/blob/read-me-file/LICENCE.txt)
 
 ## Užitečné odkazy
 
