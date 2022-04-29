@@ -233,7 +233,7 @@ class subscribedData(object):
         self.subHandler.data_change_fired.connect(self._update_subscription_model, type=Qt.QueuedConnection)
                 
         #prizareni funkci tlacitkum v kontextovem menu
-        self.interface._add_action("Odebirat uzel", self.data_change_subscribe)
+        self.interface._add_action("Odebírat uzel", self.data_change_subscribe)
         self.interface._add_action("Ukončit zobrazení", self.data_unsubscribe)
   
     def print_test1(self):
