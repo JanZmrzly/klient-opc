@@ -406,6 +406,7 @@ def main():
 
     #nasledujici prikaz nam zobrazi GUI
     opcKlient.show()
+    opcKlient.setFixedSize(1280, 720)
     
     try:
         sys.exit(application.exec_())
@@ -417,9 +418,10 @@ if __name__ == "__main__":
     main()
 
 """
-                                         ___
-                                        (._.)
-                                        <|>
-                                        _/\_
+
+[O.o]
+/)__)
+-"--"-
+                                
 """
 #TODO: a lot of
