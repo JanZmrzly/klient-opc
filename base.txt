@@ -1,7 +1,5 @@
 asyncua==0.9.92
-attrs==21.4.0
 freeopcua==0.90.6
 opcua==0.98.13
 opcua-widgets==0.6.1
-pyOpenSSL==22.0.0
 PyQt5==5.15.6
