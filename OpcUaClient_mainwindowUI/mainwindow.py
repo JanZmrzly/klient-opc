@@ -40,7 +40,7 @@ class Ui_MainWindow(object):
         self.headingFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.headingFrame.setObjectName("headingFrame")
         self.labelOPCUA = QtWidgets.QLabel(self.headingFrame)
-        self.labelOPCUA.setGeometry(QtCore.QRect(360, 10, 611, 61))
+        self.labelOPCUA.setGeometry(QtCore.QRect(240, 10, 800, 61))
         self.labelOPCUA.setStyleSheet("color: rgb(43, 100, 173);\n"
                                       "font: 35pt \"Roboto\";")
         self.labelOPCUA.setTextFormat(QtCore.Qt.AutoText)

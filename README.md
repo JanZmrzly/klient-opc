@@ -5,7 +5,7 @@ OPC UA klient byl vytvořen v rámci bakalářské práce VUT v Brně.
 ## Popis projektu
 
 Cílem projektu bylo vytvoření OPC UA klineta v programovacím jazyku Python. Projekt je postavený na základech na knihovny [FreeOpcUa](https://github.com/FreeOpcUa).
-Práce je zaměřena na možnosti využití jazyku Python pro datovou komunikaci prostřednictvím protokolu OPC UA. Je uvažována komunikace mezi PC a PLC, kdy na straně PLC je aktivován (vestavěný) OPC UA server, na straně PC je vytvořen OPC UA klient. Student v rámci práce nastuduje základní informace o protokolu OPC UA, dále naprogramuje jednoduchou testovací aplikaci na straně PLC a provede konfiguraci OPC UA serveru. Jádrem práce bude vytvoření jednoduchého OPC UA klienta pro PC v jazyku Python. Klient by měl být schopen připojit se PLC a číst hodnoty zpřístupněných proměnných.
+Práce je zaměřena na možnosti využití jazyku Python pro datovou komunikaci prostřednictvím protokolu OPC UA. Je uvažována komunikace mezi PC a PLC, kdy na straně PLC je aktivován (vestavěný) OPC UA server, na straně PC je vytvořen OPC UA klient. V rámci práce byly nastudovány základní informace o protokolu OPC UA, dále naprogramována jednoduchá testovací aplikaci na straně PLC a provedena konfiguraci OPC UA serveru. Jádrem práce bylo vytvoření jednoduchého OPC UA klienta pro PC v jazyku Python. Klient je schopen připojit se k PLC a číst hodnoty zpřístupněných proměnných.
 
 ## Obsah
 
